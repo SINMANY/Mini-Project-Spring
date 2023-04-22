@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/master-layout}">
+>
+<head>
+    <title>Posted</title>
+</head>
+<body>
+<main layout:fragment="content">
+    <div class="container mst-5">
+        <div th:replace="~{fragments/card :: card-read-only}"></div>
+    </div>
+</main>
+</body>
+</html>

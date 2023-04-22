@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:width="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style th:fragment="card-read-only">
+        .avatar{
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            position: relative;
+            bottom: 40px !important;
+            left: 10px;
+            border: 3px solid white;
+        }
+        .name{
+            position: relative;
+            bottom: 90px;
+            left: 130px;
+        }
+        .name > small{
+            opacity: 70%;
+            color: #052c65;
+
+        }
+        .cardBody{
+            margin-top: -5rem;
+        }
+        .br{
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<section  xmlns:th="http://www.thymeleaf.org">
+    <a th:fragment="card-readonly(uuid,author,username,title,thumbnail,profile)"
+       th:href="@{/user/{uuid}(uuid=${uuid})}" class="text-decoration-none">
+        <div class="card mb-4 ms-5" style="width: 300px;">
+            <div class="cover" style="width: 20%; height: 200px; background-position: center;">
+                <img th:src="@{/resources/assets/img/default/{thumbnail}(thumbnail=${thumbnail})}" alt="" style="width: 300px" height="240px" class="br">
+            </div>
+            <div class="d-flex">
+                <img class="card-img-top avatar"
+                     th:src="@{/resources/assets/img/default/{profile}(profile=${profile})}" style="width: 90px;"
+                     alt="Card image cap">
+                <section class="name ms-3 mt-5">
+                    <a href="/user/{id}"><p class="mb-0 fw-semibold" th:text="${author}"></p></a>
+                    @ <small th:text="${username}"></small>
+                </section >
+            </div>
+            <div class="card-body cardBody">
+               <p th:text="${title}"></p>
+                <button type="button" class="btn btn-primary"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                    Category
+                </button>
+            </div>
+        </div>
+
+    </a>
+
+
+ <div>
+     <a href="/postpage" th:fragment="buttonAddPost" type="button" class="btn btn-primary mb-2">New Post</a>
+     <div th:fragment="card-action(uuid,author,title,thumbnail)" class="card " style="width: 300px;">
+         <div class="cover" style="width: 20%; height: 200px; background-position: center;">
+             <img th:src="@{/resources/assets/img/default/{thumbnail}(thumbnail=${thumbnail})}" alt="" style="width: 300px" height="240px" class="br">
+         </div>
+         <div class="card-body mt-5 mb-1 ">
+             <h4 th:text="${author}"></h4>
+             <p class="card-text" th:text="${title}"></p>
+             <div class="d-flex justify-content-between align-items-center">
+                 <div class="btn-group">
+                     <a href="#" type="button" class="btn btn-outline-primary">View</a>
+                     <a href="#" type="button" class="btn btn-outline-warning">Edit</a>
+                     <a href="#" type="button" class="btn btn-outline-danger">Delete</a>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+</section>
+</body>
+</html>

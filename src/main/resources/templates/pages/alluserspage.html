@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/master-layout}">
+>
+<head>
+    <title>Users</title>
+</head>
+<body>
+<main layout:fragment="content">
+    <div class="container mt-5">
+        <div th:replace="~{fragments/card :: buttonAddPost}"></div>
+        <div class="row">
+            <div class="col col-md-6 col-lg-3 pb-4" th:each="user : ${users}" th:object="${user}">
+                <div th:replace="~{fragments/card :: card-action(*{uuid}, *{author}, *{title}, *{thumbnail})}"></div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
